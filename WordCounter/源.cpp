@@ -29,9 +29,10 @@ int WordCount(char op, const string& filePath)
 				i++;
 				charSum++;
 				if (i >= line.size()) break;
-			}//略去word分隔符
-			if (i<line.size()&&line[i - 1] == ',' || line[i - 1] == ' '||line[i-1]=='\t') wordSum++;//前面略去分隔符的情况统计word数
+			}//略去word分隔子串
+			if (i<line.size()&&line[i - 1] == ',' || line[i - 1] == ' '||line[i-1]=='\t') wordSum++;//前面略去分隔符子串的情况统计word数
 		}
+		ifs.close();
 		charSum++;//统计\n
 	}
 	return op == 'w' ? wordSum : charSum;
