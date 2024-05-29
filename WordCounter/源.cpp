@@ -14,6 +14,7 @@ int WordCount(char op, const string& filePath)
 	if (!ifs.is_open())
 	{
 		cout << "failed to open.";
+		ifs.close();
 		return 0;
 	}
 	string line;
@@ -32,9 +33,10 @@ int WordCount(char op, const string& filePath)
 			}//略去word分隔子串
 			if (i<line.size()&&line[i - 1] == ',' || line[i - 1] == ' '||line[i-1]=='\t') wordSum++;//前面略去分隔符子串的情况统计word数
 		}
-		ifs.close();
 		charSum++;//统计\n
 	}
+	ifs.close();
+
 	return op == 'w' ? wordSum : charSum;
 }
 int main(int argc,char* argv[])
